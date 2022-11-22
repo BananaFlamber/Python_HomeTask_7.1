@@ -1,13 +1,30 @@
+memory = 0
 
+def add(a, b):
+    return a + b
 
-def operation(expression):
-    """Вычисляет математическое выражение."""
-    # Компиляция выражения в байт-код
-    code = compile(expression, "<string>", "eval")
+def sub(a, b):
+    return a - b
 
-    # Валидация доступных имен
-    for name in code.co_names:
-        if name not in ALLOWED_NAMES:
-            raise NameError(f"The use of '{name}' is not allowed")
+def mult(a, b):
+    return a * b
 
-    return eval(code, {"__builtins__": {}}, ALLOWED_NAMES)
+def div(a, b):
+    return a // b
+
+OPERATIONS = {
+    "+": add,
+    "-": sub,
+    "*": mult,
+    "/": div
+}
+
+def calculate(a, b, op):
+    """
+    Ф-ция выполняющ
+    :param a:
+    :param b:
+    :param op:
+    :return:
+    """
+    return OPERATIONS[op](a, b) 
